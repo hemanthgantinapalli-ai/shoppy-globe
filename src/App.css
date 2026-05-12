@@ -1,0 +1,165 @@
+/* App Layout Styles */
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-main {
+  flex: 1;
+  background: #f8f9fa;
+}
+
+.footer {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 2rem 1rem;
+  text-align: center;
+  margin-top: 3rem;
+  border-top: 2px solid #667eea;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-content p {
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
+}
+
+.footer-content p:first-child {
+  margin-top: 0;
+}
+
+.footer-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* Loading Fallback */
+.loading-fallback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 500px;
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.loading-fallback .spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #667eea;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-fallback p {
+  color: #666;
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer {
+    padding: 1.5rem 1rem;
+    margin-top: 2rem;
+  }
+
+  .footer-content p {
+    font-size: 0.9rem;
+  }
+
+  .loading-fallback {
+    min-height: 400px;
+    gap: 1rem;
+  }
+
+  .loading-fallback .spinner {
+    width: 40px;
+    height: 40px;
+    border-width: 3px;
+  }
+
+  .loading-fallback p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-layout {
+    min-height: 100vh;
+  }
+
+  .footer {
+    padding: 1rem 0.75rem;
+    margin-top: 1.5rem;
+  }
+
+  .footer-content p {
+    font-size: 0.85rem;
+  }
+
+  .loading-fallback {
+    min-height: 300px;
+    gap: 1rem;
+  }
+
+  .loading-fallback .spinner {
+    width: 35px;
+    height: 35px;
+    border-width: 3px;
+  }
+
+  .loading-fallback p {
+    font-size: 0.95rem;
+  }
+}
+
+      box-sizing: border-box;
+    }
+  }
+}
+
+#spacer {
+  height: 88px;
+  border-top: 1px solid var(--border);
+  @media (max-width: 1024px) {
+    height: 48px;
+  }
+}
+
+.ticks {
+  position: relative;
+  width: 100%;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: -4.5px;
+    border: 5px solid transparent;
+  }
+
+  &::before {
+    left: 0;
+    border-left-color: var(--border);
+  }
+  &::after {
+    right: 0;
+    border-right-color: var(--border);
+  }
+}
