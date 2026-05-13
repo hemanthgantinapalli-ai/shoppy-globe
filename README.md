@@ -53,6 +53,12 @@ A modern, fully-functional e-commerce web application built with **React**, **Vi
   - User-friendly error messages
   - Loading states during data fetching
 
+- **Design Improvements**
+  - Premium hero section with CTA and feature highlights
+  - Modern card UI with lifted shadows and hover animations
+  - Responsive layout optimized for desktop, tablet, and mobile
+  - Enhanced checkout and cart visuals for a polished shopping flow
+
 ## 🚀 Getting Started
 
 ### Prerequisites
