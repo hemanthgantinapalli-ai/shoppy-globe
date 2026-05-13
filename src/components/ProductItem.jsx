@@ -72,6 +72,18 @@ const ProductItem = ({ product }) => {
             ⭐ {product.rating} ({product.reviews?.length || 0} reviews)
           </div>
         )}
+
+        {product.stock && (
+          <div className="product-stock">
+            {product.stock > 10 ? (
+              <span className="in-stock">✓ In Stock ({product.stock})</span>
+            ) : product.stock > 0 ? (
+              <span className="low-stock">⚠ Low Stock ({product.stock})</span>
+            ) : (
+              <span className="out-of-stock">✗ Out of Stock</span>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );
