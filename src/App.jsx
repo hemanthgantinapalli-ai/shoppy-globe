@@ -2,6 +2,7 @@ import { Suspense, lazy } from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import Header from "./components/Header";
+import ScrollToTop from "./components/ScrollToTop";
 import { store } from "./redux/store";
 import "./App.css";
 
@@ -44,6 +45,7 @@ const RootLayout = ({ children }) => (
       {children}
     </main>
     <Footer />
+    <ScrollToTop />
   </div>
 );
 
