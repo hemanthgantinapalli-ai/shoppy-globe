@@ -51,9 +51,24 @@ const ProductList = () => {
   if (loading) {
     return (
       <div className="product-list-container">
-        <div className="loading">
-          <div className="spinner"></div>
-          <p>Loading products...</p>
+        <div className="products-header">
+          <h2>Our Products</h2>
+          <p className="product-count">Loading products...</p>
+        </div>
+        <div className="product-list">
+          {Array.from({ length: 8 }).map((_, index) => (
+            <div key={index} className="product-skeleton">
+              <div className="skeleton-image"></div>
+              <div className="skeleton-content">
+                <div className="skeleton-title"></div>
+                <div className="skeleton-text"></div>
+                <div className="skeleton-footer">
+                  <div className="skeleton-price"></div>
+                  <div className="skeleton-button"></div>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     );
