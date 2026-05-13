@@ -63,8 +63,8 @@ A modern, fully-functional e-commerce web application built with **React**, **Vi
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/YOUR_USERNAME/ShoppyGlobe.git
-cd ShoppyGlobe/shoppyglobe
+git clone https://github.com/hemanthgantinapalli-ai/shoppy-globe.git
+cd shoppy-globe
 ```
 
 2. Install dependencies:
