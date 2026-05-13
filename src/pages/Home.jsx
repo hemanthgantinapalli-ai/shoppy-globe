@@ -24,6 +24,20 @@ const Home = () => {
                 View Cart
               </a>
             </div>
+            <div className="hero-stat-grid">
+              <div className="hero-stat-item">
+                <strong>500+</strong>
+                <span>curated products</span>
+              </div>
+              <div className="hero-stat-item">
+                <strong>24/7</strong>
+                <span>support ready</span>
+              </div>
+              <div className="hero-stat-item">
+                <strong>4.9/5</strong>
+                <span>customer rating</span>
+              </div>
+            </div>
           </div>
 
           <div className="hero-cards">

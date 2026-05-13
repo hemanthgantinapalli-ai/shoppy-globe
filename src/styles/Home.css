@@ -73,6 +73,34 @@
   align-items: center;
 }
 
+.hero-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+}
+
+.hero-stat-item {
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 18px;
+  padding: 1rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  color: white;
+}
+
+.hero-stat-item strong {
+  font-size: 1.2rem;
+  display: block;
+}
+
+.hero-stat-item span {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
 .cta-btn,
 .secondary-btn {
   display: inline-flex;
@@ -177,5 +205,9 @@
   .hero-actions {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .hero-stat-grid {
+    grid-template-columns: 1fr;
   }
 }
