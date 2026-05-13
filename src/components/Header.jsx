@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setSearch } from "../redux/searchSlice";
-import "../styles/Header.css";
 
 /**
  * Header Component - Navigation and search bar
