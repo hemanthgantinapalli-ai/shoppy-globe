@@ -43,7 +43,7 @@ const Home = () => {
         </div>
       </section>
 
-      <section id="products" className="products-section">
+      <section id="products" className="products-section section-surface">
         <ProductList />
       </section>
     </div>
