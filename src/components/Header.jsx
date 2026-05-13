@@ -12,6 +12,7 @@ const Header = () => {
   const search = useSelector((state) => state.search);
 
   const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+  const cartTotal = cartItems.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
 
   const handleSearchChange = (e) => {
     dispatch(setSearch(e.target.value));
@@ -52,7 +53,12 @@ const Header = () => {
           </Link>
           <Link to="/cart" className="nav-link cart-link">
             🛒 Cart
-            {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
+            {cartCount > 0 && (
+              <span className="cart-badge">
+                {cartCount}
+                <span className="cart-total">${cartTotal}</span>
+              </span>
+            )}
           </Link>
         </nav>
       </div>
