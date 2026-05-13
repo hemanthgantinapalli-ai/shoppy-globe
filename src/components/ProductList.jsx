@@ -46,7 +46,11 @@ const ProductList = () => {
       default:
         return filtered;
     }
-  }, [products, searchQuery, sortBy, selectedCategory]);
+  const clearFilters = () => {
+    setSortBy("default");
+    setSelectedCategory("all");
+    dispatch(setSearch(""));
+  };
 
   if (loading) {
     return (
@@ -115,6 +119,21 @@ const ProductList = () => {
               ))}
             </select>
           </div>
+          <div className="filter-controls">
+            <label htmlFor="category-select">Category:</label>
+            <select
+              id="category-select"
+              value={selectedCategory}
+              onChange={(e) => setSelectedCategory(e.target.value)}
+              className="category-select"
+            >
+              {categories.map(category => (
+                <option key={category} value={category}>
+                  {category === "all" ? "All Categories" : category.charAt(0).toUpperCase() + category.slice(1)}
+                </option>
+              ))}
+            </select>
+          </div>
           <div className="sort-controls">
             <label htmlFor="sort-select">Sort by:</label>
             <select
@@ -130,6 +149,11 @@ const ProductList = () => {
               <option value="name">Name A-Z</option>
             </select>
           </div>
+          {(sortBy !== "default" || selectedCategory !== "all" || searchQuery) && (
+            <button onClick={clearFilters} className="clear-filters-btn">
+              Clear Filters
+            </button>
+          )}
           <p className="product-count">
             Showing {filteredAndSortedProducts.length} of {products.length} products
           </p>
