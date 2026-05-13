@@ -182,10 +182,6 @@
   box-shadow: none;
 }
 
-.add-to-cart-btn:active {
-  transform: translateY(0);
-}
-
 .product-rating {
   font-size: 0.9rem;
   color: #f59e0b;

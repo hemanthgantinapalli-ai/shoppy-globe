@@ -159,10 +159,6 @@
 .cart-link:hover .cart-total {
   opacity: 1;
 }
-  font-size: 0.75rem;
-  font-weight: 700;
-  animation: pulse 0.5s ease;
-}
 
 @keyframes pulse {
   0% {

@@ -38,6 +38,7 @@ const CartItem = ({ item }) => {
       </div>
 
       <div className="cart-item-quantity">
+        <span className="qty-label">Qty</span>
         <button
           onClick={handleDecrease}
           className="qty-btn"
@@ -57,7 +58,10 @@ const CartItem = ({ item }) => {
       </div>
 
       <div className="cart-item-total">
-        <p className="total-price">${itemTotal}</p>
+        <p className="total-price">
+          <span className="total-label">Total</span>
+          ${itemTotal}
+        </p>
       </div>
 
       <button
