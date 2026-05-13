@@ -40,6 +40,20 @@
   transition: transform 0.4s ease;
 }
 
+.discount-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+  padding: 0.4rem 0.6rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  z-index: 2;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
 .product-item:hover .product-image {
   transform: scale(1.08);
 }

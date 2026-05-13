@@ -30,6 +30,11 @@ const ProductItem = ({ product }) => {
             className="product-image"
             loading="lazy"
           />
+          {product.discountPercentage && product.discountPercentage > 0 && (
+            <div className="discount-badge">
+              -{Math.round(product.discountPercentage)}%
+            </div>
+          )}
           <div className="product-overlay">
             <span className="view-detail">View Details</span>
           </div>
