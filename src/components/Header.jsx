@@ -34,6 +34,15 @@ const Header = () => {
             onChange={handleSearchChange}
             className="search-input"
           />
+          {search && (
+            <button
+              onClick={() => dispatch(setSearch(""))}
+              className="clear-search-btn"
+              title="Clear search"
+            >
+              ✕
+            </button>
+          )}
         </div>
 
         {/* Navigation Links */}
