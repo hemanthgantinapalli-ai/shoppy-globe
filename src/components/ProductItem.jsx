@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/cartSlice";
@@ -8,6 +9,7 @@ import "../styles/ProductItem.css";
  */
 const ProductItem = ({ product }) => {
   const dispatch = useDispatch();
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const handleAddToCart = () => {
     dispatch(
@@ -18,6 +20,8 @@ const ProductItem = ({ product }) => {
         thumbnail: product.thumbnail,
       })
     );
+    setShowSuccess(true);
+    setTimeout(() => setShowSuccess(false), 2000);
   };
 
   return (
@@ -59,7 +63,7 @@ const ProductItem = ({ product }) => {
           </div>
 
           <button onClick={handleAddToCart} className="add-to-cart-btn">
-            ➕ Add to Cart
+            {showSuccess ? "✓ Added!" : "➕ Add to Cart"}
           </button>
         </div>
 

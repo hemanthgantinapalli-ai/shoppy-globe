@@ -166,6 +166,10 @@
   box-shadow: 0 14px 28px rgba(124, 58, 237, 0.24);
 }
 
+.add-to-cart-btn:active {
+  transform: translateY(0);
+}
+
 .product-rating {
   font-size: 0.9rem;
   color: #f59e0b;
