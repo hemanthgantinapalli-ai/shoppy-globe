@@ -62,8 +62,12 @@ const ProductItem = ({ product }) => {
             )}
           </div>
 
-          <button onClick={handleAddToCart} className="add-to-cart-btn">
-            {showSuccess ? "✓ Added!" : "➕ Add to Cart"}
+          <button
+            onClick={handleAddToCart}
+            className={`add-to-cart-btn ${product.stock === 0 ? 'disabled' : ''}`}
+            disabled={product.stock === 0}
+          >
+            {product.stock === 0 ? "Out of Stock" : showSuccess ? "✓ Added!" : "➕ Add to Cart"}
           </button>
         </div>
 
