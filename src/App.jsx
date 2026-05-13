@@ -1,5 +1,5 @@
 import { Suspense, lazy } from "react";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { RouterProvider, createBrowserRouter, Outlet } from "react-router-dom";
 import { Provider } from "react-redux";
 import Header from "./components/Header";
 import ScrollToTop from "./components/ScrollToTop";
@@ -38,68 +38,31 @@ const Footer = () => (
 /**
  * Root Layout Component
  */
-const RootLayout = ({ children }) => (
+const RootLayout = () => (
   <div className="app-layout">
     <Header />
     <main className="app-main">
-      {children}
+      <Suspense fallback={<LoadingFallback />}>
+        <Outlet />
+      </Suspense>
     </main>
     <Footer />
     <ScrollToTop />
   </div>
 );
 
-// Create router with dynamic routes
+// Create router with nested layout routes
 const router = createBrowserRouter([
   {
-    element: (
-      <RootLayout>
-        <Suspense fallback={<LoadingFallback />}>
-          <Home />
-        </Suspense>
-      </RootLayout>
-    ),
     path: "/",
-  },
-  {
-    element: (
-      <RootLayout>
-        <Suspense fallback={<LoadingFallback />}>
-          <ProductDetail />
-        </Suspense>
-      </RootLayout>
-    ),
-    path: "/product/:id",
-  },
-  {
-    element: (
-      <RootLayout>
-        <Suspense fallback={<LoadingFallback />}>
-          <Cart />
-        </Suspense>
-      </RootLayout>
-    ),
-    path: "/cart",
-  },
-  {
-    element: (
-      <RootLayout>
-        <Suspense fallback={<LoadingFallback />}>
-          <Checkout />
-        </Suspense>
-      </RootLayout>
-    ),
-    path: "/checkout",
-  },
-  {
-    element: (
-      <RootLayout>
-        <Suspense fallback={<LoadingFallback />}>
-          <NotFound />
-        </Suspense>
-      </RootLayout>
-    ),
-    path: "*",
+    element: <RootLayout />,
+    children: [
+      { index: true, element: <Home /> },
+      { path: "product/:id", element: <ProductDetail /> },
+      { path: "cart", element: <Cart /> },
+      { path: "checkout", element: <Checkout /> },
+      { path: "*", element: <NotFound /> },
+    ],
   },
 ]);
 

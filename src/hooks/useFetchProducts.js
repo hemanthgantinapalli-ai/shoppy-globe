@@ -10,19 +10,26 @@ const useFetchProducts = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    const controller = new AbortController();
+
     const fetchData = async () => {
       try {
         setLoading(true);
         setError(null);
-        const response = await fetch("https://dummyjson.com/products");
-        
+        const response = await fetch("https://dummyjson.com/products", {
+          signal: controller.signal,
+        });
+
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-        
+
         const data = await response.json();
         setProducts(data.products || []);
       } catch (err) {
+        if (err.name === "AbortError") {
+          return;
+        }
         setError(err.message || "Failed to fetch products");
         setProducts([]);
       } finally {
@@ -31,6 +38,8 @@ const useFetchProducts = () => {
     };
 
     fetchData();
+
+    return () => controller.abort();
   }, []);
 
   return { products, loading, error };

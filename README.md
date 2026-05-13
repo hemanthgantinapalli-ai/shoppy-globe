@@ -10,16 +10,18 @@ A modern, fully-functional e-commerce web application built with **React**, **Vi
   - App, Header, ProductList, ProductItem, ProductDetail, Cart, CartItem, Checkout, NotFound, Home
   
 - **Data Fetching** - Using `useEffect` and custom hooks
-  - `useFetchProducts` - Fetches all products from DummyJSON API
+  - `useFetchProducts` - Fetches all products from DummyJSON API with abort handling
   - `useFetchProductDetail` - Fetches individual product details
+  - `useDebounce` - Smooth search input with delayed Redux updates
   - Error handling and loading states
 
 - **State Management** - Redux Toolkit for complex state
   - `cartSlice` - Add, remove, update product quantities
   - `searchSlice` - Filter products by search query
+  - `selectors.js` - Reusable selectors for cart totals, item count, and search state
   - Centralized store configuration
 
-- **React Routing** - Dynamic routes with React Router v6
+- **React Routing** - Nested layout routes with `createBrowserRouter`
   - `/` - Home (Product List)
   - `/product/:id` - Product Details (Dynamic routing)
   - `/cart` - Shopping Cart

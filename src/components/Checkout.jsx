@@ -2,13 +2,15 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { clearCart } from "../redux/cartSlice";
+import { selectCartItems, selectCartSummary } from "../redux/selectors";
 import "../styles/Checkout.css";
 
 /**
  * Checkout Component - Order form and checkout page
  */
 const Checkout = () => {
-  const cartItems = useSelector((state) => state.cart);
+  const cartItems = useSelector(selectCartItems);
+  const { subtotal, tax, total, itemCount } = useSelector(selectCartSummary);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -30,12 +32,9 @@ const Checkout = () => {
   const [orderPlaced, setOrderPlaced] = useState(false);
 
   // Calculate totals
-  const subtotal = cartItems
-    .reduce((total, item) => total + item.price * item.quantity, 0)
-    .toFixed(2);
-
-  const tax = (subtotal * 0.1).toFixed(2);
-  const total = (parseFloat(subtotal) + parseFloat(tax)).toFixed(2);
+  const subtotalValue = subtotal.toFixed(2);
+  const taxValue = tax.toFixed(2);
+  const totalValue = total.toFixed(2);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -249,18 +248,22 @@ const Checkout = () => {
               ))}
             </div>
 
+            <div className="summary-info-row">
+              <span>Total items:</span>
+              <span>{itemCount}</span>
+            </div>
             <div className="summary-totals">
               <div className="total-row">
                 <span>Subtotal:</span>
-                <span>${subtotal}</span>
+                <span>${subtotalValue}</span>
               </div>
               <div className="total-row">
                 <span>Tax (10%):</span>
-                <span>${tax}</span>
+                <span>${taxValue}</span>
               </div>
               <div className="total-row final">
                 <span>Total:</span>
-                <span>${total}</span>
+                <span>${totalValue}</span>
               </div>
             </div>
           </div>

@@ -1,21 +1,19 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import CartItem from "./CartItem";
+import { selectCartItems, selectCartSummary } from "../redux/selectors";
 import "../styles/Cart.css";
 
 /**
  * Cart Component - Displays all items in the shopping cart
  */
 const Cart = () => {
-  const cartItems = useSelector((state) => state.cart);
+  const cartItems = useSelector(selectCartItems);
+  const { itemCount, subtotal, tax, total } = useSelector(selectCartSummary);
 
-  // Calculate totals
-  const subtotal = cartItems
-    .reduce((total, item) => total + item.price * item.quantity, 0)
-    .toFixed(2);
-
-  const tax = (subtotal * 0.1).toFixed(2);
-  const total = (parseFloat(subtotal) + parseFloat(tax)).toFixed(2);
+  const subtotalValue = subtotal.toFixed(2);
+  const taxValue = tax.toFixed(2);
+  const totalValue = total.toFixed(2);
 
   if (cartItems.length === 0) {
     return (
@@ -34,6 +32,7 @@ const Cart = () => {
   return (
     <div className="cart-container">
       <h1>Shopping Cart</h1>
+      <p className="cart-summary-text">{itemCount} item{itemCount !== 1 ? "s" : ""} in your cart</p>
 
       <div className="cart-wrapper">
         {/* Cart Items */}
@@ -63,19 +62,19 @@ const Cart = () => {
 
           <div className="summary-item">
             <span>Subtotal:</span>
-            <span>${subtotal}</span>
+            <span>${subtotalValue}</span>
           </div>
 
           <div className="summary-item">
             <span>Tax (10%):</span>
-            <span>${tax}</span>
+            <span>${taxValue}</span>
           </div>
 
           <div className="summary-divider"></div>
 
           <div className="summary-total">
             <span>Total:</span>
-            <span>${total}</span>
+            <span>${totalValue}</span>
           </div>
 
           <div className="summary-info">

@@ -1,6 +1,7 @@
 import { useState, useMemo } from "react";
 import { useSelector } from "react-redux";
 import useFetchProducts from "../hooks/useFetchProducts";
+import { selectSearchQuery } from "../redux/selectors";
 import ProductItem from "./ProductItem";
 import "../styles/ProductList.css";
 
@@ -11,7 +12,7 @@ const ProductList = () => {
   const [sortBy, setSortBy] = useState("default");
   const [selectedCategory, setSelectedCategory] = useState("all");
   const { products, loading, error } = useFetchProducts();
-  const searchQuery = useSelector((state) => state.search);
+  const searchQuery = useSelector(selectSearchQuery);
 
   // Get unique categories
   const categories = useMemo(() => {
