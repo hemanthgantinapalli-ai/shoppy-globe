@@ -5,14 +5,21 @@ import ProductItem from "./ProductItem";
 import "../styles/ProductList.css";
 
 /**
- * ProductList Component - Displays all products with search and sorting functionality
+ * ProductList Component - Displays all products with search, sorting, and category filtering
  */
 const ProductList = () => {
   const [sortBy, setSortBy] = useState("default");
+  const [selectedCategory, setSelectedCategory] = useState("all");
   const { products, loading, error } = useFetchProducts();
   const searchQuery = useSelector((state) => state.search);
 
-  // Filter and sort products
+  // Get unique categories
+  const categories = useMemo(() => {
+    const uniqueCategories = [...new Set(products.map(p => p.category))];
+    return ["all", ...uniqueCategories.sort()];
+  }, [products]);
+
+  // Filter, sort, and categorize products
   const filteredAndSortedProducts = useMemo(() => {
     let filtered = products.filter(
       (product) =>
@@ -20,6 +27,11 @@ const ProductList = () => {
         product.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
         product.category.toLowerCase().includes(searchQuery.toLowerCase())
     );
+
+    // Apply category filter
+    if (selectedCategory !== "all") {
+      filtered = filtered.filter(product => product.category === selectedCategory);
+    }
 
     // Apply sorting
     switch (sortBy) {
@@ -34,7 +46,7 @@ const ProductList = () => {
       default:
         return filtered;
     }
-  }, [products, searchQuery, sortBy]);
+  }, [products, searchQuery, sortBy, selectedCategory]);
 
   if (loading) {
     return (
@@ -73,6 +85,21 @@ const ProductList = () => {
       <div className="products-header">
         <h2>Our Products</h2>
         <div className="product-controls">
+          <div className="filter-controls">
+            <label htmlFor="category-select">Category:</label>
+            <select
+              id="category-select"
+              value={selectedCategory}
+              onChange={(e) => setSelectedCategory(e.target.value)}
+              className="category-select"
+            >
+              {categories.map(category => (
+                <option key={category} value={category}>
+                  {category === "all" ? "All Categories" : category.charAt(0).toUpperCase() + category.slice(1)}
+                </option>
+              ))}
+            </select>
+          </div>
           <div className="sort-controls">
             <label htmlFor="sort-select">Sort by:</label>
             <select
