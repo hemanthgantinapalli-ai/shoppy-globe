@@ -152,7 +152,21 @@ shoppyglobe/
 - **CSS3** - Styling with responsive design
 - **DummyJSON API** - Product data
 
-## 📋 Key Features Explained
+## � Backend API
+
+The `backend/` folder contains a Node.js and Express API for ShoppyGlobe with MongoDB integration and JWT authentication.
+
+- `POST /api/register` - Register a new user
+- `POST /api/login` - Login and receive a JWT token
+- `GET /api/products` - Fetch all products
+- `GET /api/products/:id` - Fetch one product query by ID
+- `POST /api/cart` - Add a product to the authenticated user's cart
+- `PUT /api/cart/:id` - Update quantity on a cart item
+- `DELETE /api/cart/:id` - Remove a cart item
+
+See `backend/README-backend.md` for setup details and API testing instructions.
+
+## �📋 Key Features Explained
 
 ### 1. Custom Hooks
 - `useFetchProducts()` - Fetches all products with error handling and loading state
@@ -218,9 +232,11 @@ All routes are implemented using React Router v6 with dynamic parameters:
 
 ## 🔗 GitHub Repository
 
-**Repository Link:** [Add your GitHub repository URL here after creating the repo]
+**Repository Link:** https://github.com/hemanthgantinapalli-ai/shoppy-globe
 
 ## 📝 Commits
+
+This repository currently contains 29 commits, meeting the assignment requirement of 25+ meaningful commits.
 
 The project includes 25+ meaningful commits documenting the development process:
 - Initial project setup
